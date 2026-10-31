@@ -342,11 +342,16 @@ fun CameraDetailScreen(
                         }
                         Spacer(Modifier.height(4.dp))
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text("Status:", fontSize = 13.sp, color = TextGray)
+                            Text("Status & Stok:", fontSize = 13.sp, color = TextGray)
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Box(Modifier.size(8.dp).clip(CircleShape).background(if (camera.isAvailable) GreenActive else RedError))
+                                Box(Modifier.size(8.dp).clip(CircleShape).background(if (camera.stock > 0) GreenActive else RedError))
                                 Spacer(Modifier.width(6.dp))
-                                Text(if (camera.isAvailable) "Tersedia" else "Disewa", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = if (camera.isAvailable) GreenActive else RedError)
+                                Text(
+                                    if (camera.stock > 0) "Tersedia (${camera.stock} Unit)" else "Stok Habis",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = if (camera.stock > 0) GreenActive else RedError
+                                )
                             }
                         }
                     }

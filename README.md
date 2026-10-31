@@ -31,6 +31,11 @@ Aplikasi **Axl Rent** dirancang dengan antarmuka modern bernuansa *Dark Theme* d
 * **💳 Simulasi Pembayaran & QRIS**: Pilihan metode pembayaran modern (Transfer Bank & QRIS) dengan konfirmasi pembayaran langsung.
 * **📜 Riwayat Transaksi Realtime**: Pantau status sewa dan riwayat transaksi pengguna yang tersimpan di cloud database secara realtime.
 * **👤 Manajemen Profil & Pusat Bantuan**: Informasi akun pengguna dan panduan penggunaan aplikasi.
+* **🛡️ Panel Administrator (Admin Dashboard & Manajemen Stok)**:
+  * **Monitoring Finansial & Operasional**: Pantau total pendapatan rental (*Total Revenue*), pesanan menunggu konfirmasi, serta unit kamera yang sedang disewa.
+  * **Kontrol Stok Kamera Realtime**: Manajemen jumlah stok fisik unit kamera dengan tombol *quick adjust* (+/-), indikator stok menipis, serta status stok habis otomatis.
+  * **Verifikasi Pesanan Pelanggan**: Konfirmasi pembayaran sewa masuk dan pencatatan pengembalian unit sewa.
+  * **Katalog CRUD Penuh**: Tambah armada baru, edit spesifikasi & harga harian, serta hapus barang dari inventori.
 
 ---
 

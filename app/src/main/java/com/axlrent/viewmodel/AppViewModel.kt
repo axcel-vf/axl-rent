@@ -822,4 +822,17 @@ class AppViewModel : ViewModel() {
             }
             .addOnFailureListener { e -> onFailure(e.localizedMessage ?: "Gagal menghapus barang") }
     }
+
+    /** Admin: Update stok kamera secara cepat */
+    fun adminUpdateStock(cameraId: String, newStock: Int, onComplete: ((Boolean) -> Unit)? = null) {
+        val validStock = maxOf(0, newStock)
+        val isAvail = validStock > 0
+        _cameras.value = _cameras.value.map {
+            if (it.id == cameraId) it.copy(stock = validStock, isAvailable = isAvail) else it
+        }
+        firestore.collection("cameras").document(cameraId)
+            .update(mapOf("stock" to validStock, "isAvailable" to isAvail))
+            .addOnSuccessListener { onComplete?.invoke(true) }
+            .addOnFailureListener { onComplete?.invoke(false) }
+    }
 }

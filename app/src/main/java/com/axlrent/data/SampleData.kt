@@ -25,6 +25,7 @@ data class Camera(
     val lens: String = "",
     val fullDescription: String = "",
     val imageUrl: String = "",
+    val stock: Int = 5,
     @get:Exclude val imageRes: Int? = null
 ) {
     @get:Exclude
