@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import androidx.compose.ui.graphics.asImageBitmap
 import com.axlrent.data.SampleData
 import com.axlrent.data.Camera
 import com.axlrent.ui.theme.*
@@ -49,6 +50,13 @@ fun HomeScreen(
     val userProfile by viewModel.currentUserProfile.collectAsState()
     val cameras by viewModel.cameras.collectAsState()
     val camerasLoading by viewModel.camerasLoading.collectAsState()
+    val avatarUri by viewModel.profileImageUri.collectAsState()
+    val avatarBitmap by viewModel.profileBitmap.collectAsState()
+
+    // Decode base64 avatar from profile if available
+    LaunchedEffect(userProfile?.avatarUrl) {
+        viewModel.decodeAvatarFromProfile()
+    }
 
     val userGreetingName = userProfile?.name ?: "Fotografer"
 
@@ -97,18 +105,50 @@ fun HomeScreen(
                     }) {
                         Icon(Icons.Outlined.Notifications, null, tint = TextGray)
                     }
-                    IconButton(
-                        onClick = onNavigateToProfile,
+                    // Profile Avatar (syncs with user profile picture)
+                    Box(
                         modifier = Modifier
                             .size(36.dp)
-                            .background(DarkSurface, CircleShape)
+                            .clip(CircleShape)
+                            .background(DarkSurface)
+                            .border(1.5.dp, OrangePrimary, CircleShape)
+                            .clickable { onNavigateToProfile() },
+                        contentAlignment = Alignment.Center
                     ) {
-                        Icon(
-                            Icons.Outlined.Person,
-                            null,
-                            tint = OrangePrimary,
-                            modifier = Modifier.size(20.dp)
-                        )
+                        when {
+                            avatarUri != null -> {
+                                AsyncImage(
+                                    model = avatarUri,
+                                    contentDescription = "Foto Profil",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            avatarBitmap != null -> {
+                                Image(
+                                    bitmap = avatarBitmap!!.asImageBitmap(),
+                                    contentDescription = "Foto Profil",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            !userProfile?.avatarUrl.isNullOrEmpty() && (userProfile?.avatarUrl?.startsWith("http") == true) -> {
+                                AsyncImage(
+                                    model = userProfile?.avatarUrl,
+                                    contentDescription = "Foto Profil",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            else -> {
+                                Icon(
+                                    Icons.Outlined.Person,
+                                    contentDescription = "Profil",
+                                    tint = OrangePrimary,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            }
+                        }
                     }
                 }
             }
