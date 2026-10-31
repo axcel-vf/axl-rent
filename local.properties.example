@@ -1,0 +1,4 @@
+## Location of the Android SDK on your local machine.
+## Do NOT commit your actual local.properties to Git.
+sdk.dir=C\:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk
+
