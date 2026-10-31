@@ -1207,18 +1207,18 @@ fun ProfileScreen(
                             activeCount.toString(),
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Bold,
-                            color = TextWhite
+                            color = OrangePrimary
                         )
                         Spacer(Modifier.height(4.dp))
                         Text(
-                            "Active Rentals",
+                            "Sewa Aktif",
                             fontSize = 12.sp,
                             color = TextGray
                         )
                     }
                 }
 
-                // Rating stat
+                // Total rentals stat (dynamic from order history)
                 Surface(
                     Modifier.weight(1f),
                     shape = RoundedCornerShape(14.dp),
@@ -1230,14 +1230,14 @@ fun ProfileScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "4.9",
+                            orders.size.toString(),
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Bold,
-                            color = OrangePrimary
+                            color = TextWhite
                         )
                         Spacer(Modifier.height(4.dp))
                         Text(
-                            "User Rating",
+                            "Total Sewa",
                             fontSize = 12.sp,
                             color = TextGray
                         )
