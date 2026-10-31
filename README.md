@@ -9,16 +9,71 @@
 
 ---
 
-## 📱 Fitur & Alur Antarmuka Pengguna
+## 📱 Galeri Antarmuka Aplikasi (UI Showcase)
 
-Aplikasi **Axl Rent** dirancang dengan antarmuka modern bernuansa *Dark Theme* dengan aksen *Orange Primary* yang bersih, responsif, dan mudah digunakan:
+### 1. Onboarding, Otentikasi & Beranda
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Splash Screen</b></td>
+      <td align="center"><b>Onboarding Screen</b></td>
+      <td align="center"><b>Login Akun</b></td>
+      <td align="center"><b>Beranda & Katalog</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/tampilan_pertama.png" width="180"/></td>
+      <td><img src="screenshots/before_login.png" width="180"/></td>
+      <td><img src="screenshots/login.png" width="180"/></td>
+      <td><img src="screenshots/home.png" width="180"/></td>
+    </tr>
+  </table>
+</div>
 
-* 🚀 **Onboarding & Autentikasi**: Pengenalan benefit sewa, proteksi kamera, serta alur pendaftaran dan login akun aman terintegrasi Firebase Auth.
-* 📷 **Katalog & Pencarian**: Menampilkan daftar kamera terlengkap (DSLR, Mirrorless, Action Cam) dengan rating, filter kategori, dan pencarian cepat.
-* 🔍 **Detail Spesifikasi**: Halaman spesifikasi teknis mendalam (sensor, resolusi, mount lensa, paket kelengkapan) dan ulasan pengguna.
-* 📅 **Pemesanan (Booking)**: Kalender sewa fleksibel dengan kalkulasi otomatis total biaya harian.
-* 💳 **Pembayaran & QRIS**: Simulasi pembayaran transfer bank dan QRIS instan terverifikasi realtime.
-* 📜 **Riwayat Transaksi**: Pelacakan status pesanan aktif dan riwayat sewa yang tersimpan di cloud database secara realtime.
+### 2. Alur Pemesanan, Transaksi & Keranjang
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Detail Spesifikasi</b></td>
+      <td align="center"><b>Formulir Booking</b></td>
+      <td align="center"><b>Metode Pembayaran</b></td>
+      <td align="center"><b>Keranjang Sewa</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/booking1.png" width="180"/></td>
+      <td><img src="screenshots/booking2.png" width="180"/></td>
+      <td><img src="screenshots/payment.png" width="180"/></td>
+      <td><img src="screenshots/keranjang.png" width="180"/></td>
+    </tr>
+  </table>
+</div>
+
+### 3. Aktivitas Pengguna & Akun
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Riwayat Transaksi Sewa</b></td>
+      <td align="center"><b>Profil Pengguna (Sinkronisasi Realtime)</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/history_pesan.png" width="180"/></td>
+      <td><img src="screenshots/profile.png" width="180"/></td>
+    </tr>
+  </table>
+</div>
+
+### 4. 🛡️ Panel Administrator (Admin Dashboard & Kontrol Stok)
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Dashboard Monitoring & Verifikasi Pesanan</b></td>
+      <td align="center"><b>Inventori & Manajemen Stok Fisik (+/-)</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/dashboardadmin.png" width="180"/></td>
+      <td><img src="screenshots/stok.png" width="180"/></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
@@ -26,11 +81,11 @@ Aplikasi **Axl Rent** dirancang dengan antarmuka modern bernuansa *Dark Theme* d
 
 * **🔐 Autentikasi Pengguna**: Registrasi akun baru, login dengan email/password, terintegrasi aman menggunakan **Firebase Authentication**.
 * **🔍 Katalog & Pencarian Kamera**: Eksplorasi berbagai jenis kamera (DSLR, Mirrorless, Action Cam) lengkap dengan fitur pencarian dan filter kategori.
-* **📋 Detail & Spesifikasi Lengkap**: Informasi mendalam seputar sensor kamera, resolusi, lensa bawaan, kondisi ketersediaan, serta ulasan rating.
+* **📋 Detail & Spesifikasi Lengkap**: Informasi mendalam seputar sensor kamera, resolusi, lensa bawaan, status ketersediaan unit, serta ulasan rating.
 * **📅 Sistem Booking & Kalkulasi Otomatis**: Pemilihan durasi sewa, tanggal mulai dan selesai, dengan perhitungan biaya sewa harian otomatis.
 * **💳 Simulasi Pembayaran & QRIS**: Pilihan metode pembayaran modern (Transfer Bank & QRIS) dengan konfirmasi pembayaran langsung.
 * **📜 Riwayat Transaksi Realtime**: Pantau status sewa dan riwayat transaksi pengguna yang tersimpan di cloud database secara realtime.
-* **👤 Manajemen Profil & Pusat Bantuan**: Informasi akun pengguna dan panduan penggunaan aplikasi.
+* **👤 Manajemen Profil & Foto Profil Realtime**: Informasi akun pengguna, sinkronisasi foto avatar di beranda, serta ringkasan total sewa.
 * **🛡️ Panel Administrator (Admin Dashboard & Manajemen Stok)**:
   * **Monitoring Finansial & Operasional**: Pantau total pendapatan rental (*Total Revenue*), pesanan menunggu konfirmasi, serta unit kamera yang sedang disewa.
   * **Kontrol Stok Kamera Realtime**: Manajemen jumlah stok fisik unit kamera dengan tombol *quick adjust* (+/-), indikator stok menipis, serta status stok habis otomatis.
@@ -63,7 +118,7 @@ Axl-Rent/
 │   │   │   ├── data/            # Data models & sample data
 │   │   │   ├── navigation/      # NavHost & rute navigasi aplikasi
 │   │   │   ├── ui/
-│   │   │   │   ├── screens/     # Layar Jetpack Compose (Home, Booking, Detail, dll)
+│   │   │   │   ├── screens/     # Layar Jetpack Compose (Home, Admin, Booking, Detail, dll)
 │   │   │   │   └── theme/       # Desain tema, warna, dan tipografi
 │   │   │   ├── viewmodel/       # State management & business logic
 │   │   │   └── MainActivity.kt  # Entry point aplikasi
@@ -71,8 +126,7 @@ Axl-Rent/
 │   │   └── AndroidManifest.xml
 │   ├── build.gradle.kts
 │   └── google-services.json.example  # Template kredensial Firebase
-├── ui/                          # Dokumentasi screenshot aplikasi
-├── wireframe/                   # Desain wireframe awal
+├── screenshots/                 # Dokumentasi foto tampilan aplikasi terbaru
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
@@ -110,9 +164,10 @@ cd axl-rent
 
 ## 💡 Apa yang Dipelajari & Tantangan Teknis
 
-* **Adopsi Jetpack Compose Penuh**: Membangun 100% antarmuka secara deklaratif menggunakan Material 3, mengelola State (`mutableStateOf`, `collectAsState`), dan transisi antar layar menggunakan Navigation Compose.
-* **Integrasi Firebase Cloud**: Menghubungkan otentikasi pengguna secara aman dan menangani sinkronisasi data sewa secara realtime dengan Cloud Firestore.
-* **Keamanan Kredensial**: Menerapkan praktik terbaik (*best practices*) dengan memisahkan file konfigurasi sensitif (`google-services.json`) dari repository publik menggunakan `.gitignore` dan menyediakan file `.example`.
+* **Adopsi Jetpack Compose Penuh**: Membangun antarmuka deklaratif dengan Material 3, mengelola State (`mutableStateOf`, `collectAsState`), dan transisi dinamis menggunakan Navigation Compose.
+* **Integrasi Firebase Cloud Realtime**: Menghubungkan autentikasi pengguna secara aman dan menangani sinkronisasi data sewa serta stok kamera fisik secara realtime dengan Cloud Firestore.
+* **Panel Role-Based Access Control (RBAC)**: Memisahkan tampilan dan hak akses antara pengguna umum dan akun administrator toko (`admin@axlrent.com`).
+* **Keamanan Kredensial**: Menerapkan *best practice* keamanan dengan memisahkan file konfigurasi rahasia (`google-services.json`) menggunakan `.gitignore` serta menyediakan template `.example`.
 
 ---
 
