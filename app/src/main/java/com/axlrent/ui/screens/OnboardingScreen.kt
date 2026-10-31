@@ -1,6 +1,7 @@
 package com.axlrent.ui.screens
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,10 +22,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.axlrent.R
 import com.axlrent.ui.theme.*
 import kotlinx.coroutines.launch
 import android.content.Intent
@@ -36,7 +40,8 @@ data class OnboardingPage(
     val badge: String,
     val title: String,
     val highlight: String,
-    val description: String
+    val description: String,
+    val imageRes: Int? = null
 )
 
 @Composable
@@ -47,21 +52,24 @@ fun OnboardingScreen(onNavigateToLogin: () -> Unit) {
             badge = "Premium Gear",
             title = "Akses Gear",
             highlight = "Profesional",
-            description = "Temukan berbagai pilihan kamera DSLR, Mirrorless, dan perlengkapan sinematografi terbaik untuk karya visual Anda."
+            description = "Temukan berbagai pilihan kamera DSLR, Mirrorless, dan perlengkapan sinematografi terbaik untuk karya visual Anda.",
+            imageRes = R.drawable.sony_alpha_a6000
         ),
         OnboardingPage(
             icon = Icons.Outlined.LocalShipping,
             badge = "Fast Delivery",
             title = "Pengiriman",
             highlight = "Cepat & Aman",
-            description = "Nikmati layanan pengiriman yang cepat dan aman langsung ke lokasi Anda, atau ambil langsung di studio kami."
+            description = "Nikmati layanan pengiriman yang cepat dan aman langsung ke lokasi Anda, atau ambil langsung di studio kami.",
+            imageRes = R.drawable.dji_osmo_action_3
         ),
         OnboardingPage(
             icon = Icons.Outlined.Shield,
             badge = "Full Protection",
             title = "Proteksi",
             highlight = "Kerusakan",
-            description = "Setiap penyewaan dilengkapi asuransi kerusakan sehingga Anda bisa berkarya dengan tenang tanpa khawatir."
+            description = "Setiap penyewaan dilengkapi asuransi kerusakan sehingga Anda bisa berkarya dengan tenang tanpa khawatir.",
+            imageRes = R.drawable.canon_eos_3000d
         )
     )
 
@@ -147,7 +155,7 @@ fun OnboardingScreen(onNavigateToLogin: () -> Unit) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            // Top bar with Skip
+            // Top bar with Logo and Skip
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -156,27 +164,41 @@ fun OnboardingScreen(onNavigateToLogin: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Logo
-                Text(
-                    text = "Axl ",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Light,
-                    color = TextWhite,
-                )
-                Text(
-                    text = "Rent",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = OrangePrimary,
-                )
+                // Logo & Brand
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Text(
+                        text = "Axl",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextWhite,
+                        letterSpacing = 0.5.sp
+                    )
+                    Text(
+                        text = "Rent",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = OrangePrimary,
+                        letterSpacing = 0.5.sp
+                    )
+                }
 
-                Text(
-                    text = "Lewati",
-                    color = TextGray,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium,
+                // Skip button
+                Surface(
+                    shape = RoundedCornerShape(20.dp),
+                    color = DarkSurface.copy(alpha = 0.7f),
                     modifier = Modifier.clickable { onNavigateToLogin() }
-                )
+                ) {
+                    Text(
+                        text = "Lewati",
+                        color = TextGray,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp)
+                    )
+                }
             }
 
             // Pager
@@ -293,11 +315,11 @@ private fun OnboardingPageContent(page: OnboardingPage) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Image placeholder area with gradient
+        // Image illustration area with gradient
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(210.dp)
+                .height(230.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .background(
                     Brush.verticalGradient(
@@ -309,13 +331,24 @@ private fun OnboardingPageContent(page: OnboardingPage) {
                 ),
             contentAlignment = Alignment.Center
         ) {
-            // Camera icon as visual
-            Icon(
-                imageVector = page.icon,
-                contentDescription = null,
-                modifier = Modifier.size(72.dp),
-                tint = OrangePrimary.copy(alpha = 0.6f)
-            )
+            if (page.imageRes != null) {
+                Image(
+                    painter = painterResource(id = page.imageRes),
+                    contentDescription = page.title,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp),
+                    contentScale = ContentScale.Fit
+                )
+            } else {
+                // Camera icon as fallback visual
+                Icon(
+                    imageVector = page.icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(72.dp),
+                    tint = OrangePrimary.copy(alpha = 0.6f)
+                )
+            }
 
             // Badge
             Surface(

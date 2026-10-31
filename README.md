@@ -9,36 +9,16 @@
 
 ---
 
-## 📱 Tampilan Antarmuka (UI Preview)
+## 📱 Fitur & Alur Antarmuka Pengguna
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>Onboarding</b></td>
-      <td align="center"><b>Katalog Kamera (Home)</b></td>
-      <td align="center"><b>Detail Spesifikasi</b></td>
-      <td align="center"><b>Pemesanan (Booking)</b></td>
-    </tr>
-    <tr>
-      <td><img src="ui/Onboarding%20Screen%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Home%20Screen%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Detail%20Kamera%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Booking%20Screen%20(Refined).png" width="180"/></td>
-    </tr>
-    <tr>
-      <td align="center"><b>Pembayaran</b></td>
-      <td align="center"><b>Pembayaran Sukses</b></td>
-      <td align="center"><b>Riwayat Pesanan</b></td>
-      <td align="center"><b>Profil Pengguna</b></td>
-    </tr>
-    <tr>
-      <td><img src="ui/Payment%20Screen%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Payment%20Success%20Screen%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Riwayat%20Pesanan%20(Refined).png" width="180"/></td>
-      <td><img src="ui/Profil%20Pengguna%20(Refined).png" width="180"/></td>
-    </tr>
-  </table>
-</div>
+Aplikasi **Axl Rent** dirancang dengan antarmuka modern bernuansa *Dark Theme* dengan aksen *Orange Primary* yang bersih, responsif, dan mudah digunakan:
+
+* 🚀 **Onboarding & Autentikasi**: Pengenalan benefit sewa, proteksi kamera, serta alur pendaftaran dan login akun aman terintegrasi Firebase Auth.
+* 📷 **Katalog & Pencarian**: Menampilkan daftar kamera terlengkap (DSLR, Mirrorless, Action Cam) dengan rating, filter kategori, dan pencarian cepat.
+* 🔍 **Detail Spesifikasi**: Halaman spesifikasi teknis mendalam (sensor, resolusi, mount lensa, paket kelengkapan) dan ulasan pengguna.
+* 📅 **Pemesanan (Booking)**: Kalender sewa fleksibel dengan kalkulasi otomatis total biaya harian.
+* 💳 **Pembayaran & QRIS**: Simulasi pembayaran transfer bank dan QRIS instan terverifikasi realtime.
+* 📜 **Riwayat Transaksi**: Pelacakan status pesanan aktif dan riwayat sewa yang tersimpan di cloud database secara realtime.
 
 ---
 
